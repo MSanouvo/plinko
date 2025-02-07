@@ -1,42 +1,57 @@
 import { useState, useEffect } from "react";
 import "../styles/pachinko.css";
+import Hit from "../assets/sounds/ball_collision.mp3"
+
+const ballHit = new Audio(Hit)
 
 const BOARD = [
-  [["ball"]],
+  [[]],
   [["peg"]],
   [[1], [2]],
   [["peg"], ["peg"]],
   [[1], [2], [3]],
   [["peg"], ["peg"], ["peg"]],
   [[1], [2], [3], [4]],
+  [["peg"], ["peg"], ["peg"], ["peg"]],
+  [[1], [2], [3], [4], [5]],
 ];
 
 function Pachinko() {
   const [start, startGame] = useState(false);
   const [position, setPosition] = useState(0);
+  const [previous, setPrevious] = useState(0);
   const [board, setBoard] = useState(BOARD);
-  const depth = board.length
   const [row, setRow] = useState(0);
+  const [fallSide, setfallSide] = useState("");
+  const depth = board.length;
 
   const ballDrop = () => {
+    setPrevious(position);
+    setfallSide('left')
     const gameBoard = board.map((slots) => {
-        return slots.slice()
-    })
+      return slots.slice();
+    });
     if (row < depth) {
       console.log("row: " + row);
-      if (Math.random() > 0.5) {
-        console.log("right");
-        setPosition((prev) => prev + 1);
-        console.log(position);
+      if (row === 0) {
+        fallRight();
       } else {
-        console.log("left");
-        console.log(position);
+        gameBoard[row - 2][previous] = [];
+        fallRight();
       }
       gameBoard[row][position] = ["ball"];
       setBoard(gameBoard);
       setRow((prev) => prev + 2);
-    } else{
-        startGame('over')
+      ballHit.play()
+    } else {
+      startGame("over");
+    }
+  };
+
+  const fallRight = () => {
+    if (Math.random() > 0.5) {
+      setfallSide("right");
+      setPosition((prev) => prev + 1);
     }
   };
 
@@ -44,38 +59,34 @@ function Pachinko() {
     setTimeout(() => {
       if (start === false) return;
       ballDrop();
-    }, 400);
+    }, 390);
   }, [row, start]);
 
   const handleClick = () => {
-    console.log(position);
     startGame(true);
     ballDrop();
   };
 
   const replay = () => {
-    setPosition(0)
-    setBoard(BOARD)
-    setRow(0)
-    console.log(BOARD)
-    startGame(false)
-  }
+    setPosition(0);
+    setBoard(BOARD);
+    setRow(0);
+    startGame(false);
+  };
 
   return (
     <div id="container">
       <h1>PACHINKO</h1>
+      {start === false && <button onClick={handleClick}>Play</button>}
       <div className="ball-space">
-        {board[0].map((space, index) => {
-          if (space[0] === "ball") {
-            return (
-              <button
-                id={index + 1}
-                className="ball"
-                onClick={handleClick}
-              ></button>
-            );
+        {board[0].map((space) => {
+          if (space[0] === "ball" && fallSide === 'left') {
+            return <button className="ball left"></button>;
           }
-          return <div id={index + 1} className="empty"></div>;
+          if (space[0] === "ball" && fallSide === 'right') {
+            return <button className="ball right"></button>;
+          }
+          return <div className="empty"></div>;
         })}
       </div>
       <div className="peg-row">
@@ -85,8 +96,11 @@ function Pachinko() {
       </div>
       <div className="ball-space">
         {board[2].map((space) => {
-          if (space[0] === "ball") {
-            return <div className="ball"></div>;
+          if (space[0] === "ball" && fallSide === 'left') {
+            return <button className="ball left"></button>;
+          }
+          if (space[0] === "ball" && fallSide === 'right') {
+            return <button className="ball right"></button>;
           }
           return <div className="empty"></div>;
         })}
@@ -98,8 +112,11 @@ function Pachinko() {
       </div>
       <div className="ball-space">
         {board[4].map((space) => {
-          if (space[0] === "ball") {
-            return <div className="ball"></div>;
+          if (space[0] === "ball" && fallSide === 'left') {
+            return <button className="ball left"></button>;
+          }
+          if (space[0] === "ball" && fallSide === 'right') {
+            return <button className="ball right"></button>;
           }
           return <div className="empty"></div>;
         })}
@@ -109,8 +126,24 @@ function Pachinko() {
           return <div className="peg"></div>;
         })}
       </div>
-      <div id="end">
+      <div className="ball-space">
         {board[6].map((space) => {
+          if (space[0] === "ball" && fallSide === 'left') {
+            return <button className="ball left"></button>;
+          }
+          if (space[0] === "ball" && fallSide === 'right') {
+            return <button className="ball right"></button>;
+          }
+          return <div className="empty"></div>;
+        })}
+      </div>
+      <div className="peg-row">
+        {board[7].map(() => {
+          return <div className="peg"></div>;
+        })}
+      </div>
+      <div id="end">
+        {board[8].map((space) => {
           if (space[0] === "ball") {
             return (
               <div className="basket ball-end">
@@ -121,11 +154,11 @@ function Pachinko() {
           return <div className="basket">{space}</div>;
         })}
       </div>
-      {start === 'over' && (
+      {start === "over" && (
         <div className="game-over">
-            <h2>Game Over</h2>
-            <button onClick={replay}>play again</button>
-            </div>
+          <h2>Game Over</h2>
+          <button onClick={replay}>play again</button>
+        </div>
       )}
     </div>
 

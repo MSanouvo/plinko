@@ -11,7 +11,7 @@
 .peg-row{
     display: flex;
     gap: 50px;
-    padding: 10px 0px 40px 0px;
+    padding: 0px 0px 40px 0px;
 }
 
 .ball{
@@ -20,10 +20,75 @@
     border-radius: 100%;
     background-color: white;
     outline: 2px solid black;
+    animation: .39s linear drop forwards;
+}
+
+.left{
+    animation-duration: .39s;
+    animation-name: drop, fall-left;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.right{
+    animation-duration: .39s;
+    animation-name: drop, fall-right;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-50px);
+    }
+    20%{
+        transform: translateY(-30px);
+    }
+    50%{
+        transform: translateY(-15px);
+    }
+    70%{
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fall-left{
+    70%{
+        transform: translateY(-5px);
+    }
+    80%{
+        transform: translateX(-10px) translateY(0px);
+    }
+    85%{
+        transform: translateX(-15px) translateY(10px);
+    }
+    85%, 95%{
+        transform: translateX(-20px) translateY(20px); 
+    }
+    100%{
+        transform: translateX(-30px) translateY(30px);
+    }
+}
+
+@keyframes fall-right{
+    70%{
+        transform: translateY(-5px);
+    }
+    80%{
+        transform: translateX(10px) translateY(0px);
+    }
+    85%{
+        transform: translateX(15px) translateY(10px);
+    }
+    85%, 95%{
+        transform: translateX(20px) translateY(20px); 
+    }
+    100%{
+        transform: translateX(30px) translateY(30px);
+    }
 }
 
 .ball-end{
-    display: flex;
     justify-content: center;
     align-items: end;
 }
@@ -38,9 +103,9 @@
     width: 30px;
 }
 
-.ball:hover{
+/* .ball:hover{
     background-color: rebeccapurple;
-}
+} */
 
 .peg{
     height: 20px;
