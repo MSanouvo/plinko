@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #6b6b6b;
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,13 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+#game-container{
+  display: flex;
+  margin: 20px;
+  gap: 20px
 }
-a:hover {
-  color: #535bf2;
+
+#results-banner{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 35%;
+  height: 200px;
+  width: 400px;
+  background-color: #393939;
+  outline: 2px solid black;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header{
+  width: 300px;
+  box-shadow: -3px 3px 3px  #670505;
 }
 
 body {
@@ -35,6 +52,12 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   text-align: center;
+  border: 2px solid gold;
+}
+
+.result{
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 /* button {

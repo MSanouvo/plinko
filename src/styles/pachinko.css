@@ -1,129 +1,150 @@
-#container{
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    gap: 0px;
-    outline: 1px solid black;
-    padding: 20px;
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0px;
+  outline: 5px double rgb(167, 169, 50);
+  padding: 20px;
+  width: 50vw;
+  height: 85vh;
+  background-color: rgb(33, 33, 33);
+  border-radius: 20px;
 }
 
-.peg-row{
-    display: flex;
-    gap: 50px;
-    padding: 0px 0px 40px 0px;
+#pachinko-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(177, 254, 228, 0.535);
+  padding: 20px 10px 10px 10px;
+  border: 5px ridge burlywood;
+  flex: auto;
 }
 
-.ball{
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    background-color: white;
-    outline: 2px solid black;
-    animation: .39s linear drop forwards;
+#game-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.left{
-    animation-duration: .39s;
-    animation-name: drop, fall-left;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+.peg-row {
+  display: flex;
+  gap: 55px;
+  padding: 0px 0px 40px 0px;
 }
 
-.right{
-    animation-duration: .39s;
-    animation-name: drop, fall-right;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+.ball-end {
+  justify-content: center;
+  align-items: end;
+}
+
+.ball-space {
+  display: flex;
+  gap: 40px;
+}
+
+.empty {
+  height: 30px;
+  width: 30px;
+}
+
+.peg {
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  background-color: burlywood;
+  outline: 2px solid rgb(37, 37, 37);
+  box-shadow: 0px 2px 5px 1px rgb(0, 0, 0);
+}
+
+#end {
+  display: flex;
+}
+.basket {
+  display: flex;
+  height: 60px;
+  width: 70px;
+  gap: 0;
+  outline: 2px solid black;
+  background-color: white;
+  color: black;
+}
+
+.ball {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background-color: white;
+  outline: 2px solid black;
+  animation: 0.39s linear drop forwards;
+}
+
+.left {
+  animation-duration: 0.39s;
+  animation-name: drop, fall-left;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.right {
+  animation-duration: 0.39s;
+  animation-name: drop, fall-right;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 @keyframes drop {
-    0% {
-        transform: translateY(-50px);
-    }
-    20%{
-        transform: translateY(-30px);
-    }
-    50%{
-        transform: translateY(-15px);
-    }
-    70%{
-        transform: translateY(-5px);
-    }
+  0% {
+    transform: translateY(-50px);
+  }
+  20% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
 }
 
-@keyframes fall-left{
-    70%{
-        transform: translateY(-5px);
-    }
-    80%{
-        transform: translateX(-10px) translateY(0px);
-    }
-    85%{
-        transform: translateX(-15px) translateY(10px);
-    }
-    85%, 95%{
-        transform: translateX(-20px) translateY(20px); 
-    }
-    100%{
-        transform: translateX(-30px) translateY(30px);
-    }
+@keyframes fall-left {
+  70% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateX(-10px) translateY(0px);
+  }
+  85% {
+    transform: translateX(-15px) translateY(10px);
+  }
+  85%,
+  95% {
+    transform: translateX(-20px) translateY(20px);
+  }
+  100% {
+    transform: translateX(-30px) translateY(30px);
+  }
 }
 
-@keyframes fall-right{
-    70%{
-        transform: translateY(-5px);
-    }
-    80%{
-        transform: translateX(10px) translateY(0px);
-    }
-    85%{
-        transform: translateX(15px) translateY(10px);
-    }
-    85%, 95%{
-        transform: translateX(20px) translateY(20px); 
-    }
-    100%{
-        transform: translateX(30px) translateY(30px);
-    }
-}
-
-.ball-end{
-    justify-content: center;
-    align-items: end;
-}
-
-.ball-space{
-    display: flex;
-    gap: 40px;
-}
-
-.empty{
-    height: 30px;
-    width: 30px;
-}
-
-/* .ball:hover{
-    background-color: rebeccapurple;
-} */
-
-.peg{
-    height: 20px;
-    width: 20px;
-    border-radius: 100%;
-    background-color: burlywood;
-    outline: 2px solid black;
-}
-
-#end{
-    display: flex;
-}
-.basket{
-    display: flex;
-    height: 60px;
-    width: 70px;
-    gap: 0;
-    outline: 2px solid black;
-    background-color: white;
-    color: black;
+@keyframes fall-right {
+  70% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateX(10px) translateY(0px);
+  }
+  85% {
+    transform: translateX(15px) translateY(10px);
+  }
+  85%,
+  95% {
+    transform: translateX(20px) translateY(20px);
+  }
+  100% {
+    transform: translateX(30px) translateY(30px);
+  }
 }
