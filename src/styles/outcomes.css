@@ -1,14 +1,16 @@
 #outcomes-container {
-  width: 30vw;
-  height: 85vh;
+  width: 25vw;
+  height: 75vh;
+  max-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: left;
   align-items: center;
-  outline: 5px double rgb(167, 169, 50);
+  /* outline: 5px double rgb(167, 169, 50); */
   padding: 20px;
-  background-color: rgb(33, 33, 33);
+  background-color: rgb(53, 53, 53);
   border-radius: 20px;
+  box-shadow: 0px 0px 10px rgb(211, 211, 211);
 }
 
 #outcomes-content {
@@ -16,7 +18,7 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
 }
 
 #form {
@@ -28,10 +30,27 @@
 #list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 1.5rem;
-  justify-content: baseline;
+  gap: 10px;
+  font-size: 1.2rem;
   align-items: baseline;
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 0;
+}
+
+#outcome{
+    border: none;
+    box-shadow: none;
+}
+
+.list-item{
+    text-wrap: wrap;
+    word-wrap: break-word;
+    max-width: 95%;
+}
+
+.shrink-list{
+    height: 250px;
 }
 
 .open-form {
@@ -40,13 +59,13 @@
 }
 
 .form-label {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .form-buttons {
   height: 40px;
-  width: 150px;
-  font-size: 1.3rem;
+  width: 180px;
+  font-size: 1.4rem;
   justify-self: end;
   align-self: center;
   background-color: rgb(77, 77, 77);
@@ -55,4 +74,20 @@
 .form-text {
   padding: 10px;
   resize: none;
+  overflow-y: auto;
+  max-height: 80px;
+}
+
+.prompt{
+    font-size: 1.2rem;
+    align-self: center;
+    margin-left: -40px;
+    color: rgba(255, 255, 255, 0.515);
+}
+
+.line{
+    display: flex;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(83, 83, 83);
 }

@@ -4,11 +4,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 0px;
-  outline: 5px double rgb(167, 169, 50);
-  padding: 20px;
-  width: 50vw;
-  height: 85vh;
-  background-color: rgb(33, 33, 33);
+  /* outline: 5px double rgb(167, 169, 50); */
+  /* background-color: rgb(53, 53, 53); */
   border-radius: 20px;
 }
 
@@ -16,9 +13,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   align-items: center;
-  background-color: rgba(177, 254, 228, 0.535);
-  padding: 20px 10px 10px 10px;
+  background-color: rgb(30, 96, 48);
+  padding: 10px 10px 10px 10px;
   border: 5px ridge burlywood;
   flex: auto;
 }
@@ -80,6 +78,11 @@
   background-color: white;
   outline: 2px solid black;
   animation: 0.39s linear drop forwards;
+}
+
+.shadow{
+    box-shadow: 0px 4px 2px black;
+    margin-bottom: 2px;
 }
 
 .left {

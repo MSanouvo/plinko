@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #000000;
+  background-color: #1d1d1d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,28 +15,55 @@
 
 #game-container{
   display: flex;
+  justify-content: center;
   margin: 20px;
-  gap: 20px
+  gap: 50px
+}
+
+#nav-header{
+  width: 100vw;
+  height: 100px;
+  background-color: #A44A3F;
+  align-content: center;
 }
 
 #results-banner{
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 30%;
-  left: 35%;
-  height: 200px;
-  width: 400px;
-  background-color: #393939;
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 600px;
+  background-color: #555555;
   outline: 2px solid black;
-  border-radius: 30px;
-  justify-content: center;
+  border-radius: 20px;
+  justify-content: space-between;
   align-items: center;
+  padding: 20px;
+}
+
+#play:hover{
+  background-color: rgb(56, 132, 107);
+}
+
+.banner-button{
+  font-size: 1.5rem;
+  width: 100px;
+  height: 100p;
 }
 
 .header{
   width: 300px;
-  box-shadow: -3px 3px 3px  #670505;
+  padding: 10px;
+  box-shadow: 0px 3px 10px  #670505;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: 2px solid gold;
+  font-weight: bold;
+  margin: 20px;
 }
 
 body {
@@ -49,15 +76,44 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
   line-height: 1.1;
   text-align: center;
-  border: 2px solid gold;
 }
 
 .result{
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow-y: auto;
+  margin: 0;
+  align-content: center;
+}
+
+.title{
+  font-size: 4em;
+  font-weight: bold;
+  margin: 0;
+  /* justify-self: center;
+  font-weight: bold; */
+  position: absolute;
+  top: 0px;
+  animation: slide 5s infinite linear;
+  text-wrap: nowrap;
+  text-shadow: rgb(198, 173, 31) 1px 1px 30px;
+}
+
+@keyframes slide {
+  0%{
+    left: -30%;
+  }
+  100%{
+    left: 100%;
+  }
 }
 
 /* button {

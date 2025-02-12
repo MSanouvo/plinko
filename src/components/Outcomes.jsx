@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "../styles/outcomes.css";
 
-function Outcomes({ setData }) {
+function Outcomes({ setData, banner }) {
   const [form, setForm] = useState(false);
   const [outcomes, setOutcomes] = useState([]);
   const [text, setText] = useState("");
 
   const handleClick = () => {
-    setForm(true);
+    if(banner === false){
+        setForm(true);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -30,19 +32,22 @@ function Outcomes({ setData }) {
 
   return (
     <div id="outcomes-container">
-      <h1 className="header">Outcomes</h1>
+      <h1 className="header" id="outcome">Outcomes</h1>
       <div id="outcomes-content">
-        <ol id="list">
+        <ol id="list" className={form === true ? 'shrink-list' : ''}>
           {outcomes.length != 0 ? (
             outcomes.map((item, index) => {
-              return <li key={index}>{item}</li>;
+              return <li className="list-item" key={index}>{item}</li>;
             })
           ) : (
-            <div >Add your outcomes below (5 max)</div>
+            <div className="prompt">
+                <p>Add 5 outcomes below</p>
+            </div>
           )}
         </ol>
         {form === true ? (
           <form id="form" onSubmit={handleSubmit}>
+            <div className="line"></div>
             <label className="form-label">List Outcomes</label>
             <textarea
               className="form-text"

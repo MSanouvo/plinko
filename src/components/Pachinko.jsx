@@ -12,6 +12,8 @@ function Pachinko({
   board,
   currentRow,
   position,
+  banner,
+  reset,
 }) {
   const [start, startGame] = useState(false);
   //   const [position, setPosition] = useState(0);
@@ -39,14 +41,12 @@ function Pachinko({
       setCurrentRow((prev) => prev + 2);
       if (currentRow === gameBoard.length - 1) {
         setResult(position);
+        startGame(false);
         // console.log(position)
         // console.log(gameBoard)
       }
       ballHit.play();
     }
-    // else {
-    //   startGame("over");
-    // }
   };
 
   const fallRight = () => {
@@ -64,23 +64,20 @@ function Pachinko({
   }, [currentRow, start]);
 
   const handleClick = () => {
-    startGame(true);
-    ballDrop();
+    if (start != true) {
+      reset();
+      startGame(true);
+      ballDrop();s
+    }
   };
-
-  //   const replay = () => {
-  //     setPosition(0);
-  //     setBoard(BOARD);
-  //     setRow(0);
-  //     startGame(false);
-  //     reset()
-  //   };
-
   return (
     <div id="container">
       <div id="pachinko-container">
-        <h1 className="header">PLINKO</h1>
-        {start === false && <button onClick={handleClick}>Play</button>}
+        <button className="header" id="play" onClick={handleClick}>
+          Play Plinko
+        </button>
+        {/* <button className="header" id="play" onClick={handleClick}>{banner===true ? "Play Again" : "Play "}</button> */}
+        {/* {start === false && <button onClick={handleClick}>Play</button>} */}
         <div id="game-area">
           <div className="ball-space">
             {board[0].map((space) => {
@@ -151,7 +148,7 @@ function Pachinko({
               if (space[0] === "ball") {
                 return (
                   <div className="basket ball-end">
-                    <div className="ball"></div>
+                    <div className="ball shadow"></div>
                   </div>
                 );
               }
