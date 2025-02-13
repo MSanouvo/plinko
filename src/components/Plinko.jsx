@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import "../styles/pachinko.css";
+import "../styles/plinko.css";
 import Hit from "../assets/sounds/ball_collision.mp3";
 
 const ballHit = new Audio(Hit);
+ballHit.volume = 0.3
 
-function Pachinko({
+function Plinko({
   setResult,
   setBoard,
   setPosition,
@@ -12,14 +13,10 @@ function Pachinko({
   board,
   currentRow,
   position,
-  banner,
   reset,
 }) {
   const [start, startGame] = useState(false);
-  //   const [position, setPosition] = useState(0);
   const [previous, setPrevious] = useState(0);
-  //   const [board, setBoard] = useState(BOARD);
-  //   const [row, setRow] = useState(0);
   const [fallSide, setfallSide] = useState("");
   const depth = board.length;
 
@@ -42,8 +39,6 @@ function Pachinko({
       if (currentRow === gameBoard.length - 1) {
         setResult(position);
         startGame(false);
-        // console.log(position)
-        // console.log(gameBoard)
       }
       ballHit.play();
     }
@@ -67,17 +62,12 @@ function Pachinko({
     if (start != true) {
       reset();
       startGame(true);
-      ballDrop();s
+      ballDrop();
     }
   };
   return (
     <div id="container">
-      <div id="pachinko-container">
-        <button className="header" id="play" onClick={handleClick}>
-          Play Plinko
-        </button>
-        {/* <button className="header" id="play" onClick={handleClick}>{banner===true ? "Play Again" : "Play "}</button> */}
-        {/* {start === false && <button onClick={handleClick}>Play</button>} */}
+      <div id="plinko-container">
         <div id="game-area">
           <div className="ball-space">
             {board[0].map((space) => {
@@ -157,8 +147,11 @@ function Pachinko({
           </div>
         </div>
       </div>
+      <button className="header" id="play" onClick={handleClick}>
+          Play
+        </button>
     </div>
   );
 }
 
-export default Pachinko;
+export default Plinko;

@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap");
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: rgb(5, 5, 5);
+  background: linear-gradient(
+    139deg,
+    rgba(5, 5, 5, 1) 0%,
+    rgba(13, 19, 50, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nav-header {
+  width: 100vw;
+}
+
+.title {
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  top: 5%;
+  font-size: 4em;
+  font-family: "Yellowtail", serif;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
+  text-wrap: nowrap;
+  text-align: center;
+  text-shadow: rgb(255, 51, 31) 1px 1px 30px;
+  animation: blink 60s infinite linear;
+}
+
+#game-container {
+  align-content: center;
+  height: 100vh;
+}
+
+.plinko {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outcome-open {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  transform: translate(0, 0);
+  transition: transform 0.5s ease;
+}
+
+.hidden {
+  transform: translate(-97%, 0%);
+}
+
+#hide-content {
+  background-color: transparent;
+  border: none;
+  width: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#hide-content:hover {
+  background-color: #474946;
+}
+
+#results-banner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 650px;
+  background-color: #33372f;
+  outline: 2px solid black;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 2px 10px #000000;
+}
+
+.banner-button {
+  font-size: 1.5rem;
+  width: 100px;
+  height: 100p;
+  background-color: #3d3e3c;
+  border: none;
+  font-family: "Prompt", serif;
+  font-weight: 400;
+  font-style: normal;
+  border: #f9f9f9 outset;
+}
+
+.banner-button:hover {
+  background-color: #474946;
+}
+
+.header {
+  padding: 10px;
+  font-size: 2.5rem;
+  background-color: transparent;
+  font-weight: bold;
+  margin: 20px;
+  text-align: center;
+}
+
+.result {
+  font-size: 3rem;
+  font-weight: bold;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow-y: auto;
+  margin: 0;
+  align-content: center;
+}
+
+@keyframes blink {
+  0%,
+  29%,
+  31%,
+  79%,
+  81%,
+  100% {
+    text-shadow: rgb(255, 51, 31) 1px 1px 30px;
+  }
+  30%,
+  80% {
+    text-shadow: rgb(255, 51, 31) 1px 1px 3px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    top: 25%;
+  }
+  #results-banner {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 430px) {
+  #hide-content {
+    width: 10vw;
+  }
+
+  .title {
+    top: 10%;
+  }
+
+  #results-banner {
+    max-width: 300px;
+    max-height: 250px;
+  }
+}

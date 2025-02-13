@@ -1,16 +1,9 @@
 #outcomes-container {
   width: 25vw;
-  height: 75vh;
-  max-height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: center;
-  /* outline: 5px double rgb(167, 169, 50); */
   padding: 20px;
-  background-color: rgb(53, 53, 53);
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgb(211, 211, 211);
+  background-color: #33372f;
 }
 
 #outcomes-content {
@@ -19,6 +12,14 @@
   height: 100%;
   justify-content: space-between;
   width: 100%;
+}
+
+#outcome {
+  border: none;
+  box-shadow: none;
+  font-family: "Prompt", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
 #form {
@@ -31,26 +32,24 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   align-items: baseline;
-  max-height: 400px;
+  max-height: 550px;
   overflow-y: auto;
   margin: 0;
+  font-family: "Prompt", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-#outcome{
-    border: none;
-    box-shadow: none;
+.list-item {
+  text-wrap: wrap;
+  word-wrap: break-word;
+  max-width: 95%;
 }
 
-.list-item{
-    text-wrap: wrap;
-    word-wrap: break-word;
-    max-width: 95%;
-}
-
-.shrink-list{
-    height: 250px;
+.shrink-list {
+  height: 400px;
 }
 
 .open-form {
@@ -60,34 +59,61 @@
 
 .form-label {
   font-size: 1.5rem;
+  font-family: "Prompt", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .form-buttons {
   height: 40px;
   width: 180px;
   font-size: 1.4rem;
-  justify-self: end;
   align-self: center;
-  background-color: rgb(77, 77, 77);
+  background-color: #3d3e3c;
+  font-family: "Prompt", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.form-text {
+.form-buttons:hover {
+  background-color: #474946;
+}
+
+textarea {
   padding: 10px;
   resize: none;
   overflow-y: auto;
-  max-height: 80px;
+  max-height: 110px;
+  font-family: "Prompt", serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.prompt{
-    font-size: 1.2rem;
-    align-self: center;
-    margin-left: -40px;
-    color: rgba(255, 255, 255, 0.515);
+.prompt {
+  font-size: 1.2rem;
+  font-family: "Prompt", serif;
+  font-weight: 300;
+  font-style: normal;
+  align-self: center;
+  margin-left: -40px;
+  color: rgba(255, 255, 255, 0.515);
 }
 
-.line{
-    display: flex;
-    width: 100%;
-    height: 2px;
-    background-color: rgb(83, 83, 83);
+.line {
+  display: flex;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(83, 83, 83);
+}
+
+@media (max-width: 1024px) {
+  #outcomes-container {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 430px) {
+  #outcomes-container {
+    width: 80vw;
+  }
 }

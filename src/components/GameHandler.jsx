@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Pachinko from "./Pachinko";
+import Plinko from "./Plinko";
 import Outcomes from "./Outcomes";
+import "../styles/index.css"
 
 const BOARD = [
   [[]],
@@ -21,14 +22,9 @@ function GameHandler() {
   const [board, setBoard] = useState(BOARD);
   const [currentRow, setCurrentRow] = useState(0);
   const [position, setPosition] = useState(0);
-
-  const getOutcomes = (outcomes) => {
-    console.log(outcomes);
-    setOutcomesArray(outcomes);
-  };
+  const [navHidden, setnavHidden] = useState(false);
 
   const getResult = (e) => {
-    console.log(e);
     setResult(e);
     setBanner(true);
   };
@@ -41,24 +37,37 @@ function GameHandler() {
     setCurrentRow(0);
   };
 
+  const hideNav = () => {
+    if (navHidden != true) setnavHidden(true);
+    else setnavHidden(false);
+  };
+
   return (
     <div>
       <div id="nav-header">
-        <p className="title">PLAY PLINKO</p>
+        <p className="title">Play Plinko</p>
       </div>
       <div id="game-container">
-        <Pachinko
-          setResult={getResult}
-          board={board}
-          currentRow={currentRow}
-          position={position}
-          setBoard={setBoard}
-          setPosition={setPosition}
-          setCurrentRow={setCurrentRow}
-          banner={banner}
-          reset={reset}
-        />
-        <Outcomes setData={getOutcomes} banner={banner} />
+        <div
+          className={
+            navHidden === true ? "outcome-open hidden" : "outcome-open"
+          }
+        >
+          <Outcomes setData={setOutcomesArray} banner={banner} />
+          <button id="hide-content" onClick={hideNav}></button>
+        </div>
+        <div className="plinko">
+          <Plinko
+            setResult={getResult}
+            board={board}
+            currentRow={currentRow}
+            position={position}
+            setBoard={setBoard}
+            setPosition={setPosition}
+            setCurrentRow={setCurrentRow}
+            reset={reset}
+          />
+        </div>
       </div>
       {banner === true && outcomesArray.length != 0 && (
         <div id="results-banner">
